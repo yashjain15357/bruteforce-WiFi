@@ -1,0 +1,5 @@
+2026-02-02 13:56:14 [INFO] Starting password test for lucifer_ysh
+2026-02-02 13:56:14 [INFO] Security type: WPA2PSK
+2026-02-02 13:56:14 [INFO] Generating optimized password list for SSID: lucifer_ysh
+2026-02-02 13:56:14 [INFO] Generated 504 unique passwords
+2026-02-02 13:58:21 [SUCCESS] Password found: 123456789

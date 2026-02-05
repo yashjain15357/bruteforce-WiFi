@@ -1,3 +1,70 @@
 2025-03-08 16:40:15 [INFO] System settings initialized
 2025-03-08 16:50:19 [INFO] System settings initialized
 2025-03-08 16:52:04 [INFO] System settings initialized
+2026-02-02 13:49:49 [ERROR] Administrator rights check failed
+2026-02-02 13:52:14 [INFO] System settings initialized
+2026-02-02 13:53:19 [INFO] Testing WiFi capabilities...
+2026-02-02 13:53:19 [INFO] Adapter found: Wi-Fi - Status: Up
+2026-02-02 13:53:19 [INFO] WLAN Service Status: Running
+2026-02-02 13:53:19 [INFO] WiFi capabilities test completed successfully
+2026-02-02 13:53:19 [ERROR] Interface 'Wi-Fi' not found
+2026-02-02 13:55:41 [INFO] System settings initialized
+2026-02-02 13:55:51 [INFO] Testing WiFi capabilities...
+2026-02-02 13:55:51 [INFO] Adapter found: Wi-Fi - Status: Up
+2026-02-02 13:55:52 [INFO] WLAN Service Status: Running
+2026-02-02 13:55:52 [INFO] WiFi capabilities test completed successfully
+2026-02-02 13:55:52 [INFO] Interface is ready for use
+2026-02-02 13:55:52 [INFO] Initiating network scan...
+2026-02-02 13:55:54 [INFO] Found 9 networks
+2026-02-02 13:59:05 [INFO] System settings initialized
+2026-02-02 13:59:07 [INFO] Testing WiFi capabilities...
+2026-02-02 13:59:07 [INFO] Adapter found: Wi-Fi - Status: Disconnected
+2026-02-02 13:59:07 [INFO] WLAN Service Status: Running
+2026-02-02 13:59:07 [INFO] Enabling adapter...
+2026-02-02 13:59:09 [INFO] WiFi capabilities test completed successfully
+2026-02-02 13:59:09 [INFO] Interface is ready for use
+2026-02-02 13:59:09 [INFO] Initiating network scan...
+2026-02-02 13:59:11 [INFO] Found 16 networks
+2026-02-02 14:27:42 [INFO] System settings initialized
+2026-02-02 14:27:45 [INFO] Testing WiFi capabilities...
+2026-02-02 14:27:45 [INFO] Adapter found: Wi-Fi - Status: Up
+2026-02-02 14:27:45 [INFO] WLAN Service Status: Running
+2026-02-02 14:27:45 [INFO] WiFi capabilities test completed successfully
+2026-02-02 14:27:45 [INFO] Interface is ready for use
+2026-02-02 14:27:45 [INFO] Initiating network scan...
+2026-02-02 14:27:46 [INFO] Found 5 networks
+2026-02-02 14:27:59 [ERROR] Critical error: Cannot bind argument to parameter 'SSID' because it is an empty string.
+2026-02-02 14:28:41 [INFO] System settings initialized
+2026-02-02 14:28:45 [INFO] Testing WiFi capabilities...
+2026-02-02 14:28:45 [INFO] Adapter found: Wi-Fi - Status: Disconnected
+2026-02-02 14:28:45 [INFO] WLAN Service Status: Running
+2026-02-02 14:28:45 [INFO] Enabling adapter...
+2026-02-02 14:28:46 [INFO] WiFi capabilities test completed successfully
+2026-02-02 14:28:46 [INFO] Interface is ready for use
+2026-02-02 14:28:46 [INFO] Initiating network scan...
+2026-02-02 14:28:46 [INFO] Found 5 networks
+2026-02-02 17:29:21 [INFO] System settings initialized
+2026-02-02 17:29:27 [INFO] Testing WiFi capabilities...
+2026-02-02 17:29:27 [INFO] Adapter found: Wi-Fi - Status: Up
+2026-02-02 17:29:28 [INFO] WLAN Service Status: Running
+2026-02-02 17:29:28 [INFO] WiFi capabilities test completed successfully
+2026-02-02 17:29:28 [INFO] Interface is ready for use
+2026-02-02 17:29:28 [INFO] Initiating network scan...
+2026-02-02 17:29:29 [INFO] Found 3 networks
+2026-02-02 17:42:11 [INFO] System settings initialized
+2026-02-02 17:42:14 [INFO] Testing WiFi capabilities...
+2026-02-02 17:42:15 [INFO] Adapter found: Wi-Fi - Status: Up
+2026-02-02 17:42:15 [INFO] WLAN Service Status: Running
+2026-02-02 17:42:15 [INFO] WiFi capabilities test completed successfully
+2026-02-02 17:42:15 [INFO] Interface is ready for use
+2026-02-02 17:42:15 [INFO] Initiating network scan...
+2026-02-02 17:42:16 [INFO] Found 2 networks
+2026-02-02 17:42:48 [INFO] System settings initialized
+2026-02-02 17:42:52 [INFO] Testing WiFi capabilities...
+2026-02-02 17:42:52 [INFO] Adapter found: Wi-Fi - Status: Disconnected
+2026-02-02 17:42:52 [INFO] WLAN Service Status: Running
+2026-02-02 17:42:52 [INFO] Enabling adapter...
+2026-02-02 17:42:52 [INFO] WiFi capabilities test completed successfully
+2026-02-02 17:42:53 [INFO] Interface is ready for use
+2026-02-02 17:42:53 [INFO] Initiating network scan...
+2026-02-02 17:42:53 [INFO] Found 3 networks

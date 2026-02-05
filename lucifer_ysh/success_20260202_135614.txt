@@ -1,0 +1,9 @@
+﻿SSID: lucifer_ysh
+Password: 123456789
+Security Type: WPA2PSK
+Interface: Wi-Fi
+Time Taken: 01:55
+Passwords Tested: 76
+Average Speed: 0.7 passwords/second
+Date: 02/02/2026 13:58:21
+Signal Strength: 97%

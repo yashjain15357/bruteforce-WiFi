@@ -7,19 +7,19 @@
 $CONFIG = @{
     PasswordLength = 8
     MaxPasswords = 100000
-    Interface = $null  # Will store adapter name
-    InterfaceGUID = $null  # Will store adapter GUID
+    Interface = $null
+    InterfaceGUID = $null
     ScanTimeout = 10
-    ConnectionTimeout = 3
+    ConnectionTimeout = 1              # ← REDUCED from 3
     Separators = @("-", "_", ".", "@", "#", "$", "!")
     LogDirectory = if ($PSScriptRoot) { $PSScriptRoot } else { [System.IO.Path]::GetTempPath() }
-    DebugMode = $false
+    DebugMode = $false                 # MUST stay false for speed
     RetryAttempts = 0
-    ScanDelaySeconds = 3
-    MinSignalStrength = 20
+    ScanDelaySeconds = 1               # ← REDUCED from 3
+    MinSignalStrength = 1
     CommonPasswordFile = Join-Path $(if ($PSScriptRoot) { $PSScriptRoot } else { [System.IO.Path]::GetTempPath() }) "common_passwords.txt"
 }
-
+common_passwords
 class ConnectionStateManager {
     hidden [string]$Interface
     hidden [string]$InterfaceGUID
@@ -42,16 +42,16 @@ class ConnectionStateManager {
             
             # Disconnect any existing connection
             netsh wlan disconnect interface="$($this.Interface)" | Out-Null
-            Start-Sleep -Milliseconds 200
+            Start-Sleep -Milliseconds 50
 
             # Reset adapter if needed
             $adapter = Get-NetAdapter | Where-Object InterfaceGuid -eq $this.InterfaceGUID
             if ($adapter.Status -ne "Up") {
                 Write-Log "Resetting adapter..." "DEBUG" $this.LogFile $this.DebugFile
                 Disable-NetAdapter -Name $this.Interface -Confirm:$false
-                Start-Sleep -Milliseconds 500
+                Start-Sleep -Milliseconds 100
                 Enable-NetAdapter -Name $this.Interface -Confirm:$false
-                Start-Sleep -Milliseconds 1000
+                Start-Sleep -Milliseconds 200
             }
 
             # Clear existing profiles for clean testing
@@ -398,7 +398,7 @@ function Test-SpecificAdapterConnection {
 
     try {
         # Allow more time for connection establishment
-        Start-Sleep -Milliseconds 222
+        Start-Sleep -Milliseconds 50
 
         # Get interface status (both English and German)
         $connectionState = netsh wlan show interfaces name="$($AdapterInfo.Name)" | Out-String
@@ -627,7 +627,7 @@ function Test-WifiCapabilities {
         if ($adapterInfo.Status -ne "Up") {
             Write-Log "Enabling adapter..." "INFO" $LogFile $DebugFile
             Enable-NetAdapter -Name $AdapterInfo.Name -Confirm:$false
-            Start-Sleep -Seconds 2
+            Start-Sleep -Milliseconds 500
         }
 
         Write-Log "WiFi capabilities test completed successfully" "INFO" $LogFile $DebugFile
@@ -713,13 +713,8 @@ function Reset-WifiAdapter {
 
         # Disconnect current connection
         netsh wlan disconnect interface="$($AdapterInfo.Name)" | Out-Null
-        Start-Sleep -Milliseconds 500
-
-        # Disable and enable adapter
-        netsh interface set interface "$($AdapterInfo.Name)" disable | Out-Null
-        Start-Sleep -Milliseconds 500
-        netsh interface set interface "$($AdapterInfo.Name)" enable | Out-Null
-        Start-Sleep -Milliseconds 500
+        netsh wlan disconnect interface="$Interface" | Out-Null
+        Start-Sleep -Milliseconds   25    
 
         Write-Log "Adapter reset completed" "INFO" $LogFile $DebugFile
         return $true
@@ -741,13 +736,13 @@ function Get-WifiNetworks {
 
         # Disconnect from current network
         netsh wlan disconnect interface="$($CONFIG.Interface)" | Out-Null
-        Start-Sleep -Milliseconds 333
+        Start-Sleep -Milliseconds 100
 
         # Multiple scan attempts for better results
         for ($i = 1; $i -le 2; $i++) {
             Write-Log "Scan attempt $i..." "DEBUG" $LogFile $DebugFile
             netsh wlan scan interface="$($CONFIG.Interface)" | Out-Null
-            Start-Sleep -Milliseconds ($CONFIG.ScanDelaySeconds * 200)
+            Start-Sleep -Milliseconds 100
         }
 
         # Force English output and specify interface
@@ -920,7 +915,7 @@ function Generate-PasswordList {
     $listsFolder = Join-Path $CONFIG.LogDirectory "lists"
     if (Test-Path $listsFolder) {
         Get-ChildItem -Path $listsFolder -Filter "*.txt" | ForEach-Object {
-            if ($_.Name -ne "common_passwords.txt") {
+            if ($_.Name -ne "mydataset.txt") {
                 $words = Get-Content $_.FullName | ForEach-Object { $_.ToLower().Trim() }
                 foreach ($word in $words) {
                     if ($word.Length -lt 8) {
@@ -1054,7 +1049,7 @@ function Test-WifiConnection {
         $null = netsh wlan connect name="$uniqueProfileName" interface="$Interface"
         
         # Quick initial check
-        Start-Sleep -Milliseconds 500
+        Start-Sleep -Milliseconds 100
         $maxAttempts = 1
         $attempt = 0
         $connected = $false
